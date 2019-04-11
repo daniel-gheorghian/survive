@@ -1,0 +1,16 @@
+*.iml
+target/
+.idea/
+*.log
+.DS_Store
+~*
+*.bak
+node
+node_modules
+bower_components
+.metadata/
+server/.settings/
+server/.classpath
+server/.project
+RemoteSystemsTempFiles/.project
+coverage/
