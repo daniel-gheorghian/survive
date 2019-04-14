@@ -1,13 +1,8 @@
 package dictionary;
 
-import java.util.*;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import dictionary.model.DictionaryWord;
 
-import static java.util.stream.Collectors.*;
-import static java.util.Collections.*;
-import static java.util.Comparator.*;
+import java.util.*;
 
 public class Dictionary
 {
@@ -15,75 +10,107 @@ public class Dictionary
 
     public void pushWords( String englishWord, String... romanianTranslations )
     {
-        Function<String, DictionaryWord> createDictionaryWord = romanianWord -> new DictionaryWord( englishWord, romanianWord );
+        for( String translation : romanianTranslations )
+        {
+            List<DictionaryWord> wordList = dictionary.get( englishWord );
 
-        List<DictionaryWord> words = Arrays.stream( romanianTranslations )
-                                           .map( createDictionaryWord )
-                                           .collect( toList( ) );
+            if( wordList == null )
+            {
+                wordList = new ArrayList<>( );
+                dictionary.put( englishWord, wordList );
+            }
 
-        dictionary.merge( englishWord, words, this::union );
-    }
-
-    private <T> List<T> union( List<T> list1, List<T> list2 )
-    {
-        return Stream.of( list1, list2 )
-                     .flatMap( List::stream )
-                     .collect( toList( ) );
+            wordList.add( new DictionaryWord( englishWord, translation ) );
+        }
     }
 
     public DictionaryWord firstTranslationFor( String word )
     {
-        return allTranslationsFor( word ).stream( )
-                                         .findFirst( )
-                                         .orElseThrow( RuntimeException::new );
+        List<DictionaryWord> wordList = allTranslationsFor( word );
+
+        if( wordList.isEmpty( ) )
+        {
+            throw new RuntimeException( );
+        }
+
+        return wordList.get( 0 );
     }
 
     public List<DictionaryWord> allTranslationsFor( String word )
     {
-        return dictionary.getOrDefault( word, emptyList( ) );
+        List<DictionaryWord> wordList = dictionary.get( word );
+
+        if( wordList == null )
+        {
+            return Collections.emptyList( );
+        }
+
+        return wordList;
     }
 
     public List<DictionaryWord> allTranslationsForSorted( String word )
     {
-        List<DictionaryWord> words = allTranslationsFor( word );
+        List<DictionaryWord> wordList = allTranslationsFor( word );
 
-        words.sort( comparing( DictionaryWord::getRomanianWord ) );
+        Collections.sort( wordList, new Comparator<DictionaryWord>( )
+        {
+            @Override
+            public int compare( DictionaryWord o1, DictionaryWord o2 )
+            {
+                return o1.getRomanianWord( ).compareTo( o2.getRomanianWord( ) );
+            }
+        } );
 
-        return words;
+        return wordList;
     }
 
     public List<DictionaryWord> pickWords( int count )
     {
-        return generateRandomLetters( count ).stream( )
-                                             .map( this::pickWord )
-                                             .filter( Optional::isPresent )
-                                             .map( Optional::get )
-                                             .collect( toList( ) );
+        List<DictionaryWord> words = new ArrayList<>( );
+
+        for( String letter : generateRandomLetters( count ) )
+        {
+            DictionaryWord word = pickWord( letter );
+
+            if( word != null )
+            {
+                words.add( word );
+            }
+        }
+
+        return words;
     }
 
     public List<String> generateRandomLetters( int count )
     {
         Random random = new Random( );
+        List<String> letters = new ArrayList<>( );
 
-        return random.ints( 97, 123 )
-                     .limit( count )
-                     .mapToObj( Character::toChars )
-                     .map( String::new )
-                     .collect( toList( ) );
+        for( int i = 0; i < count; i++ )
+        {
+            int letter = random.nextInt( (122 - 97) + 1 ) + 97;
+
+            letters.add( toChar( letter ) );
+        }
+
+        return letters;
     }
 
-    private Optional<DictionaryWord> pickWord( String startingLetter )
+    private String toChar( int asciiCode )
     {
-        Predicate<String> startsWithLetter = word -> word.startsWith( startingLetter );
+        return String.valueOf( (char) asciiCode );
+    }
 
-        Optional<String> word = dictionary.keySet( )
-                                          .stream( )
-                                          .filter( startsWithLetter )
-                                          .findAny( );
+    private DictionaryWord pickWord( String startingLetter )
+    {
+        for( String word : dictionary.keySet( ) )
+        {
+            if( word.startsWith( startingLetter ) )
+            {
+                return dictionary.get( word ).get( 0 );
+            }
+        }
 
-        return word.map( dictionary::get )
-                   .orElse( emptyList( ) )
-                   .stream( )
-                   .findAny( );
+        return null;
     }
 }

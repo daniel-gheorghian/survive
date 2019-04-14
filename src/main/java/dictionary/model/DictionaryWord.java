@@ -1,4 +1,4 @@
-package dictionary;
+package dictionary.model;
 
 import java.util.Objects;
 
