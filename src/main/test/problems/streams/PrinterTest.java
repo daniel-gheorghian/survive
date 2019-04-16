@@ -5,9 +5,9 @@ import problems.streams.discount.model.Customer;
 import problems.streams.discount.model.MemberCard;
 import problems.streams.discount.solution.Printer;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
 public class PrinterTest
 {

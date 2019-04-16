@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Optional;
 
 import static dictionary.ExpectException.assertException;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
 
 public class DictionaryTest
