@@ -14,11 +14,11 @@ public class Stock
 
     public void buy( int quantity )
     {
-
+        System.out.println( "Buying stock: code: " + code + ", value: " + value + ", in quantity: " + quantity );
     }
 
     public void sell( int quantity )
     {
-
+        System.out.println( "Selling stock: code: " + code + ", value: " + value + ", in quantity: " + quantity );
     }
 }
