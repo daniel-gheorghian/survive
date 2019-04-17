@@ -2,5 +2,5 @@ package problems.design.library.model;
 
 public enum MediaType
 {
-    BOOK, VIDEO, MP3;
+    BOOK, VIDEO, MP3
 }

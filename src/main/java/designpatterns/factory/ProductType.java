@@ -2,5 +2,5 @@ package designpatterns.factory;
 
 public enum ProductType
 {
-    LOAN, STOCK, BOND;
+    LOAN, STOCK, BOND
 }
