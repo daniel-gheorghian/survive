@@ -7,6 +7,9 @@ import java.util.Optional;
 
 public class Printer
 {
+    /*
+     * Get user friendly discount percentage for member customers
+     */
     public String getDiscountLine( Customer customer )
     {
         return Optional.ofNullable( customer.getMemberCard( ) )

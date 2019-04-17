@@ -10,6 +10,14 @@ import java.util.stream.Collectors;
 
 public class Airport
 {
+    /*
+     * Compute per destination airport the mean delay of flights and the cancellation rate
+     * Flight data looks like this:
+     * {
+     *      "origin": "BOS", "destination": "LAX", "date": "2015-01-12",
+     *      "number": "25", "carrier": "AA", "delayMinutes": 0.0, "cancelled": false
+     * }
+     */
     public List<AirportStatistics> airportStatistics( )
     {
         Map<String, List<FlightData>> dataByAirport = flightData( ).stream( )

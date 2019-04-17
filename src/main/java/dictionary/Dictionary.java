@@ -8,6 +8,10 @@ public class Dictionary
 {
     private Map<String, List<DictionaryWord>> dictionary = new HashMap<>( );
 
+    /*
+     * Add words to the english-romanian dictionary
+     * Each romanian translation will for a pair with the english word and be saved in the dictionary
+     */
     public void pushWords( String englishWord, String... romanianTranslations )
     {
         for( String translation : romanianTranslations )
@@ -24,6 +28,9 @@ public class Dictionary
         }
     }
 
+    /*
+     * Find the first romanian translation for an english word
+     */
     public DictionaryWord firstTranslationFor( String word )
     {
         List<DictionaryWord> wordList = allTranslationsFor( word );
@@ -36,6 +43,9 @@ public class Dictionary
         return wordList.get( 0 );
     }
 
+    /*
+     * Find all romanian translations for an english word
+     */
     public List<DictionaryWord> allTranslationsFor( String word )
     {
         List<DictionaryWord> wordList = dictionary.get( word );
@@ -48,6 +58,9 @@ public class Dictionary
         return wordList;
     }
 
+    /*
+     * Find all romanian translations for an english word, sorted by the romanian words
+     */
     public List<DictionaryWord> allTranslationsForSorted( String word )
     {
         List<DictionaryWord> wordList = allTranslationsFor( word );
@@ -64,6 +77,10 @@ public class Dictionary
         return wordList;
     }
 
+    /*
+     * Randomly pick pair of words from the dictionary
+     * A pair is an english word and the romanian translation
+     */
     public List<DictionaryWord> pickWords( int count )
     {
         List<DictionaryWord> words = new ArrayList<>( );
@@ -81,6 +98,9 @@ public class Dictionary
         return words;
     }
 
+    /*
+     * Randomly generate a number of letters
+     */
     public List<String> generateRandomLetters( int count )
     {
         Random       random  = new Random( );

@@ -5,6 +5,9 @@ import problems.streams.discount.model.MemberCard;
 
 public class Printer
 {
+    /*
+     * Get user friendly discount percentage for member customers
+     */
     public String getDiscountLine( Customer customer )
     {
         if( customer.getMemberCard( ) == null )

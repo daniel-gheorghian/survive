@@ -11,6 +11,9 @@ import java.util.List;
 
 public class GetCustomers
 {
+    /*
+     * Get profiles of customers from group one of active campaigns
+     */
     public List<CustomerProfile> profilesOfActiveCampaignsParticipants( List<Campaign> campaigns )
     {
         List<CustomerProfile> customerProfiles = new ArrayList<>( );
