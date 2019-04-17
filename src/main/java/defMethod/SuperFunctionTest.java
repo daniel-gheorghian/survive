@@ -3,7 +3,8 @@ package defMethod;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Function;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 public class SuperFunctionTest
 {
@@ -12,19 +13,27 @@ public class SuperFunctionTest
         Function<Integer, Integer>      doubleFunction      = i -> 2 * i;
         SuperFunction<Integer, Integer> superDoubleFunction = i -> 2 * i;
 
-        System.out.println( "Normal function" );
-        System.out.println( compute( doubleFunction ) );
+        List<Integer> data = readData( );
 
-        System.out.println( "Super function" );
-        System.out.println( compute( superDoubleFunction ) );
+        System.out.println( "\nNormal function:" );
+        System.out.println( compute( data, doubleFunction ) );
+
+        System.out.println( "\nSuper function:" );
+        System.out.println( compute( data, superDoubleFunction ) );
     }
 
-    private static List<Integer> compute( Function<Integer, Integer> f )
+    private static <T> List<T> compute( List<T> data, Function<T, T> f )
     {
-        return new Random( ).ints( 0, 5 )
+        return data.stream( )
+                   .map( f )
+                   .collect( toList( ) );
+    }
+
+    private static List<Integer> readData( )
+    {
+        return new Random( ).ints( 0, 10 )
                             .limit( 10 )
                             .boxed( )
-                            .map( f )
-                            .collect( Collectors.toList( ) );
+                            .collect( toList( ) );
     }
 }
