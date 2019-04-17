@@ -13,7 +13,7 @@ public class PilgrimsFromIasi
 
         for( Pilgrim pilgrim : pilgrims )
         {
-            if( pilgrim.isHooded( ) && homeCity.equals( pilgrim.getHomeCity() ) )
+            if( pilgrim.isHooded( ) && homeCity.equals( pilgrim.getHomeCity( ) ) )
             {
                 result.add( pilgrim );
             }

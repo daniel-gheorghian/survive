@@ -14,7 +14,7 @@ public class HoodedPilgrims
 
         for( Pilgrim pilgrim : pilgrims )
         {
-            if( pilgrim.isHooded( ) && color.equals( pilgrim.getHoodColor() ) )
+            if( pilgrim.isHooded( ) && color.equals( pilgrim.getHoodColor( ) ) )
             {
                 result.add( pilgrim );
             }

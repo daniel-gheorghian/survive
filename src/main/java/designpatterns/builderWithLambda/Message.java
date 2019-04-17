@@ -1,6 +1,5 @@
 package designpatterns.builderWithLambda;
 
-import designpatterns.builder.MessageBuilder;
 import designpatterns.builder.Sender;
 
 public class Message

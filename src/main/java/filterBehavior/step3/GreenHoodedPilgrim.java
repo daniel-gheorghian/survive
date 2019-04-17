@@ -7,6 +7,6 @@ public class GreenHoodedPilgrim implements PilgrimPredicate
     @Override
     public boolean accept( Pilgrim pilgrim )
     {
-        return pilgrim.isHooded() && "green".equals( pilgrim.getHoodColor() );
+        return pilgrim.isHooded( ) && "green".equals( pilgrim.getHoodColor( ) );
     }
 }

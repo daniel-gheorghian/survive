@@ -10,8 +10,8 @@ public class WithLambda
 {
     public static void main( String[] args )
     {
-        List<Pilgrim> pilgrims = new ArrayList<>(  );
+        List<Pilgrim> pilgrims = new ArrayList<>( );
 
-        new ByCriteriaPilgrims().filterBy( pilgrims, p -> "Iasi".equals( p.getHomeCity() ) );
+        new ByCriteriaPilgrims( ).filterBy( pilgrims, p -> "Iasi".equals( p.getHomeCity( ) ) );
     }
 }

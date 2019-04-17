@@ -3,7 +3,7 @@ package problems.streams.campaign.model;
 public class Participant
 {
     private CustomerProfile customerProfile;
-    private int campaignGroup;
+    private int             campaignGroup;
 
     public Participant( CustomerProfile customerProfile, int campaignGroup )
     {

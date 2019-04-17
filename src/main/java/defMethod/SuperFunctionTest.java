@@ -9,7 +9,7 @@ public class SuperFunctionTest
 {
     public static void main( String[] args )
     {
-        Function<Integer, Integer> doubleFunction = i -> 2 * i;
+        Function<Integer, Integer>      doubleFunction      = i -> 2 * i;
         SuperFunction<Integer, Integer> superDoubleFunction = i -> 2 * i;
 
         System.out.println( "Normal function" );

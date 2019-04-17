@@ -3,7 +3,7 @@ package designpatterns.command;
 public class SellStock implements Order
 {
     private Stock stock;
-    private int quantity;
+    private int   quantity;
 
     public SellStock( Stock stock, int quantity )
     {

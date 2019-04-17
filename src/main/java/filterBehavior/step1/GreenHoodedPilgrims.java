@@ -13,7 +13,7 @@ public class GreenHoodedPilgrims
 
         for( Pilgrim pilgrim : pilgrims )
         {
-            if( pilgrim.isHooded( ) && "green".equals( pilgrim.getHoodColor() ) )
+            if( pilgrim.isHooded( ) && "green".equals( pilgrim.getHoodColor( ) ) )
             {
                 result.add( pilgrim );
             }

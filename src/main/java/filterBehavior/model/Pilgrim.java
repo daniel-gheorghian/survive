@@ -2,10 +2,10 @@ package filterBehavior.model;
 
 public class Pilgrim
 {
-    private String name;
-    private String homeCity;
+    private String  name;
+    private String  homeCity;
     private boolean hooded;
-    private String hoodColor;
+    private String  hoodColor;
 
     public String getHoodColor( )
     {

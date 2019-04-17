@@ -11,14 +11,14 @@ public class WithAnonymousClass
 {
     public static void main( String[] args )
     {
-        List<Pilgrim> pilgrims = new ArrayList<>(  );
+        List<Pilgrim> pilgrims = new ArrayList<>( );
 
-        new ByCriteriaPilgrims().filterBy( pilgrims, new PilgrimPredicate( )
+        new ByCriteriaPilgrims( ).filterBy( pilgrims, new PilgrimPredicate( )
         {
             @Override
             public boolean accept( Pilgrim pilgrim )
             {
-                return pilgrim.isHooded() && "green".equals( pilgrim.getHoodColor() );
+                return pilgrim.isHooded( ) && "green".equals( pilgrim.getHoodColor( ) );
             }
         } );
     }

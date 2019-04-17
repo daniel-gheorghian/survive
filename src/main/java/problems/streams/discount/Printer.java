@@ -17,7 +17,8 @@ public class Printer
         if( discount != null )
         {
             return "Discount%: " + discount;
-        } else
+        }
+        else
         {
             return "";
         }

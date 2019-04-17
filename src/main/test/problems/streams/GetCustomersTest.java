@@ -29,8 +29,8 @@ public class GetCustomersTest
     @Test
     public void list_of_non_active_campaigns_returns_empty_customer_profiles_list( )
     {
-        GetCustomers getCustomers = new GetCustomers( );
-        List<Campaign> campaigns = Arrays.asList( inactiveCampaign( ), inactiveCampaign( ) );
+        GetCustomers   getCustomers = new GetCustomers( );
+        List<Campaign> campaigns    = Arrays.asList( inactiveCampaign( ), inactiveCampaign( ) );
 
         List<CustomerProfile> customerProfiles = getCustomers.profilesOfActiveCampaignsParticipants( campaigns );
 

@@ -8,7 +8,7 @@ public class SMSSender extends Sender
 
     public SMSSender( Contact contact )
     {
-        super( contact.getName() );
+        super( contact.getName( ) );
 
         this.contact = contact;
     }

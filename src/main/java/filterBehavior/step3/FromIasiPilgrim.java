@@ -7,6 +7,6 @@ public class FromIasiPilgrim implements PilgrimPredicate
     @Override
     public boolean accept( Pilgrim pilgrim )
     {
-        return "Iasi".equals( pilgrim.getHomeCity() );
+        return "Iasi".equals( pilgrim.getHomeCity( ) );
     }
 }

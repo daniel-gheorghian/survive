@@ -2,7 +2,7 @@ package designpatterns.builderWithLambda;
 
 import designpatterns.builder.Sender;
 
-import static designpatterns.builderWithLambda.Message.*;
+import static designpatterns.builderWithLambda.Message.message;
 
 public class Client
 {

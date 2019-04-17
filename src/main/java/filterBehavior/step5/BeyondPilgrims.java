@@ -10,8 +10,8 @@ public class BeyondPilgrims
     public static void main( String[] args )
     {
         List<Pilgrim> pilgrims = new ArrayList<>( );
-        List<String> strings = new ArrayList<>( );
-        List<Integer> numbers = new ArrayList<>( );
+        List<String>  strings  = new ArrayList<>( );
+        List<Integer> numbers  = new ArrayList<>( );
 
         new ByCriteria( ).filterBy( pilgrims, p -> p.isHooded( ) );
 

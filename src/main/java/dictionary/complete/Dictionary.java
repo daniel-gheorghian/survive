@@ -75,7 +75,7 @@ public class Dictionary
 
     private String toChar( int asciiCode )
     {
-        return String.valueOf( (char) asciiCode );
+        return String.valueOf( (char)asciiCode );
     }
 
     private Optional<DictionaryWord> pickWord( String startingLetter )

@@ -11,7 +11,7 @@ public interface SenderBuilder
         return sender( new Sender( name ) );
     }
 
-    default SMSBuilder sms()
+    default SMSBuilder sms( )
     {
         return sender -> content -> new Message( sender, null, content );
     }

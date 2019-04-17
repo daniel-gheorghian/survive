@@ -83,12 +83,12 @@ public class Dictionary
 
     public List<String> generateRandomLetters( int count )
     {
-        Random random = new Random( );
+        Random       random  = new Random( );
         List<String> letters = new ArrayList<>( );
 
         for( int i = 0; i < count; i++ )
         {
-            int letter = random.nextInt( (122 - 97) + 1 ) + 97;
+            int letter = random.nextInt( ( 122 - 97 ) + 1 ) + 97;
 
             letters.add( toChar( letter ) );
         }
@@ -98,7 +98,7 @@ public class Dictionary
 
     private String toChar( int asciiCode )
     {
-        return String.valueOf( (char) asciiCode );
+        return String.valueOf( (char)asciiCode );
     }
 
     private DictionaryWord pickWord( String startingLetter )

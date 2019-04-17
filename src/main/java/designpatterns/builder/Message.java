@@ -28,8 +28,8 @@ public class Message
         return content;
     }
 
-    public static MessageBuilder builder()
+    public static MessageBuilder builder( )
     {
-        return new MessageBuilder(  );
+        return new MessageBuilder( );
     }
 }
