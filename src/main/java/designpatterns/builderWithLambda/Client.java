@@ -8,18 +8,18 @@ public class Client
 {
     public static void main( String[] args )
     {
-        Message message = message( ).sender( new Sender( "dan" ) )
-                                    .title( "Hello" )
-                                    .content( "World" );
+        Message message1 = message( ).sender( new Sender( "dan" ) )
+                                     .title( "Hello" )
+                                     .content( "World" );
 
         //with conversion
-        message = message( ).sender( "dan" )
-                            .title( "Hello" )
-                            .content( "World" );
+        Message message2 = message( ).sender( "dan" )
+                                     .title( "Hello" )
+                                     .content( "World" );
 
         //with alternate path
-        message = message( ).sms( )
-                            .sender( new SMSSender( new Contact( 07, "dan" ) ) )
-                            .content( "Hello" );
+        Message message3 = message( ).sms( )
+                                     .sender( new SMSSender( new Contact( 123, "dan" ) ) )
+                                     .content( "Hello" );
     }
 }
