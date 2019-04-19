@@ -1,9 +1,9 @@
 package problems.streams;
 
 import org.junit.Test;
+import problems.streams.discount.Printer;
 import problems.streams.discount.model.Customer;
 import problems.streams.discount.model.MemberCard;
-import problems.streams.discount.solution.Printer;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
