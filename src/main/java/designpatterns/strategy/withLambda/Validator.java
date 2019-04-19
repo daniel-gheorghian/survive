@@ -1,5 +1,7 @@
 package designpatterns.strategy.withLambda;
 
+import designpatterns.strategy.model.Field;
+
 import java.util.function.Predicate;
 
 public interface Validator extends Predicate<String>
@@ -22,5 +24,15 @@ public interface Validator extends Predicate<String>
     default Validator combine( Validator other )
     {
         return value -> this.test( value ) && other.test( value );
+    }
+
+    default Validator and( Validator other )
+    {
+        return this.and( other );
+    }
+
+    default boolean validate( Field field )
+    {
+        return new FieldValidator( this ).validate( field );
     }
 }

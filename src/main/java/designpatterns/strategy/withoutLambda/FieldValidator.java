@@ -1,5 +1,6 @@
 package designpatterns.strategy.withoutLambda;
 
+import designpatterns.strategy.model.Field;
 import designpatterns.strategy.withoutLambda.validator.Validator;
 
 public class FieldValidator

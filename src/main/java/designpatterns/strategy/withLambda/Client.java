@@ -1,6 +1,10 @@
 package designpatterns.strategy.withLambda;
 
+import designpatterns.strategy.model.Field;
+
 import java.util.stream.Stream;
+
+import static designpatterns.strategy.withLambda.Validator.*;
 
 public class Client
 {
@@ -9,22 +13,18 @@ public class Client
     {
         Field field = new Field( "aaa" );
 
-        FieldValidator isNumeric   = new FieldValidator( Validator.isNumeric( ) );
-        FieldValidator isLowercase = new FieldValidator( Validator.isLowercase( ) );
-
-        boolean fieldValid1 = isNumeric.validate( field );
-        boolean fieldValid2 = isLowercase.validate( field );
+        isNumeric( ).and( isLowercase( ) ).validate( field );
     }
 
-    //function composition
+    //generic function composition
     public static void main( String[] args )
     {
         Field field = new Field( "aaa" );
 
-        Validator combinedValidator = Stream.of( Validator.isVowels( ), Validator.isLowercase( ) )
+        Validator combinedValidator = Stream.of( isVowels( ), isLowercase( ) )
                                             .reduce( v -> true, Validator::combine );
 
-        boolean fieldValid = new FieldValidator( combinedValidator ).validate( field );
+        boolean fieldValid = combinedValidator.validate( field );
 
         System.out.println( fieldValid );
     }

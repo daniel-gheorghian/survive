@@ -1,4 +1,4 @@
-package designpatterns.strategy.withLambda;
+package designpatterns.strategy.model;
 
 public class Field
 {
