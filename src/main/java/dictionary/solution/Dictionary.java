@@ -1,10 +1,12 @@
-package dictionary.complete;
+package dictionary.solution;
 
 import dictionary.model.DictionaryWord;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
-import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import static java.util.Collections.emptyList;
@@ -65,49 +67,5 @@ public class Dictionary
         words.sort( comparing( DictionaryWord::getRomanianWord ) );
 
         return words;
-    }
-
-    /*
-     * Randomly pick pair of words from the dictionary
-     * A pair is an english word and the romanian translation
-     */
-    public List<DictionaryWord> pickWords( int count )
-    {
-        return generateRandomLetters( count ).stream( )
-                                             .map( this::pickWord )
-                                             .filter( Optional::isPresent )
-                                             .map( Optional::get )
-                                             .collect( toList( ) );
-    }
-
-    /*
-     * Randomly generate a number of letters
-     */
-    public List<String> generateRandomLetters( int count )
-    {
-        Random random = new Random( );
-
-        return random.ints( 97, 123 )
-                     .limit( count )
-                     .mapToObj( this::toChar )
-                     .collect( toList( ) );
-    }
-
-    private String toChar( int asciiCode )
-    {
-        return String.valueOf( (char)asciiCode );
-    }
-
-    private Optional<DictionaryWord> pickWord( String startingLetter )
-    {
-        Predicate<Map.Entry<String, List<DictionaryWord>>> startsWithLetter = e -> e.getKey( ).startsWith( startingLetter );
-
-        return dictionary.entrySet( )
-                         .stream( )
-                         .filter( startsWithLetter )
-                         .limit( 1 )
-                         .map( Map.Entry::getValue )
-                         .flatMap( List::stream )
-                         .findAny( );
     }
 }

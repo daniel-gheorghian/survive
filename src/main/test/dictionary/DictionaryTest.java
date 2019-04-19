@@ -4,41 +4,44 @@ import dictionary.model.DictionaryWord;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 import static dictionary.ExpectException.assertException;
+import static dictionary.WordsGenerator.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.mockito.Mockito.*;
 
 public class DictionaryTest
 {
     private Dictionary dictionary;
+    private String     englishWord;
+    private String[]   romanianWords;
 
     @Before
     public void setup( )
     {
         dictionary = new Dictionary( );
+        englishWord = generateWord( );
+        romanianWords = generateWords( 2 );
     }
 
     @Test
     public void should_return_home_for_first_translation( )
     {
-        dictionary.pushWords( "home", "casa", "acasa" );
+        dictionary.pushWords( englishWord, romanianWords );
 
-        String translation = dictionary.firstTranslationFor( "home" ).getRomanianWord( );
+        String translation = dictionary.firstTranslationFor( englishWord ).getRomanianWord( );
 
-        assertThat( translation, is( equalTo( "casa" ) ) );
+        assertThat( translation, is( equalTo( romanianWords[0] ) ) );
     }
 
     @Test
     public void should_return_all_translations( )
     {
-        dictionary.pushWords( "home", "casa", "acasa" );
+        dictionary.pushWords( englishWord, romanianWords );
 
-        List<DictionaryWord> words = dictionary.allTranslationsFor( "home" );
+        List<DictionaryWord> words = dictionary.allTranslationsFor( englishWord );
 
         assertThat( words, hasSize( 2 ) );
     }
@@ -46,21 +49,22 @@ public class DictionaryTest
     @Test
     public void should_return_all_translations_sorted( )
     {
-        dictionary.pushWords( "home", "casa", "acasa" );
+        romanianWords = new String[] { generateWordStartingWith( "b" ), generateWordStartingWith( "a" ) };
+        dictionary.pushWords( englishWord, romanianWords );
 
-        List<DictionaryWord> words = dictionary.allTranslationsForSorted( "home" );
+        List<DictionaryWord> words = dictionary.allTranslationsForSorted( englishWord );
 
         assertThat( words, hasSize( 2 ) );
-        assertThat( words.get( 0 ).getRomanianWord( ), is( equalTo( "acasa" ) ) );
-        assertThat( words.get( 1 ).getRomanianWord( ), is( equalTo( "casa" ) ) );
+        assertThat( words.get( 0 ).getRomanianWord( ), is( equalTo( romanianWords[1] ) ) );
+        assertThat( words.get( 1 ).getRomanianWord( ), is( equalTo( romanianWords[0] ) ) );
     }
 
     @Test
-    public void should_throw_exception_when_no_single_word_found( )
+    public void should_throw_exception_when_no_word_found( )
     {
-        dictionary.pushWords( "home", "casa", "acasa" );
+        dictionary.pushWords( englishWord, romanianWords );
 
-        Optional<Throwable> exception = assertException( ( ) -> dictionary.firstTranslationFor( "house" ) );
+        Optional<Throwable> exception = assertException( ( ) -> dictionary.firstTranslationFor( generateWord( ) ) );
 
         assertThat( exception.isPresent( ), equalTo( true ) );
         assertThat( exception.get( ).getClass( ), typeCompatibleWith( RuntimeException.class ) );
@@ -69,36 +73,11 @@ public class DictionaryTest
     @Test
     public void should_merge_translations_for_the_same_word( )
     {
-        dictionary.pushWords( "home", "casa" );
-        dictionary.pushWords( "home", "acasa" );
+        dictionary.pushWords( englishWord, generateWord( ) );
+        dictionary.pushWords( englishWord, generateWord( ) );
 
-        List<DictionaryWord> words = dictionary.allTranslationsFor( "home" );
+        List<DictionaryWord> words = dictionary.allTranslationsFor( englishWord );
 
         assertThat( words, hasSize( 2 ) );
-    }
-
-    @Test
-    public void should_return_random_letters( )
-    {
-        List<String> letters = dictionary.generateRandomLetters( 10 );
-
-        assertThat( letters, hasSize( 10 ) );
-        assertThat( letters, everyItem(
-                isOneOf( "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w",
-                         "x", "y", "z" ) ) );
-    }
-
-    @Test
-    public void should_return_random_words( )
-    {
-        dictionary = spy( dictionary );
-        when( dictionary.generateRandomLetters( anyInt( ) ) ).thenReturn( Arrays.asList( "h" ) );
-
-        dictionary.pushWords( "home", "casa" );
-
-        List<DictionaryWord> words = dictionary.pickWords( 1 );
-
-        assertThat( words, hasSize( 1 ) );
-        assertThat( words, containsInAnyOrder( new DictionaryWord( "home", "casa" ) ) );
     }
 }
