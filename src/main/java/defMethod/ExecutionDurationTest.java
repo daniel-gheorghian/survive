@@ -4,22 +4,22 @@ import java.util.List;
 import java.util.Random;
 import java.util.function.Function;
 
+import static defMethod.ExecutionDuration.measure;
 import static java.util.stream.Collectors.toList;
 
-public class SuperFunctionTest
+public class ExecutionDurationTest
 {
     public static void main( String[] args )
     {
-        Function<Integer, Integer>      doubleFunction      = i -> 2 * i;
-        SuperFunction<Integer, Integer> superDoubleFunction = i -> 2 * i;
+        Function<Integer, Integer> doubleFunction = i -> 2 * i;
 
         List<Integer> data = readData( );
 
-        System.out.println( "\nNormal function:" );
+        System.out.println( "\nExecute function:" );
         System.out.println( compute( data, doubleFunction ) );
 
-        System.out.println( "\nSuper function:" );
-        System.out.println( compute( data, superDoubleFunction ) );
+        System.out.println( "\nExecute and Measure function:" );
+        System.out.println( compute( data, measure( doubleFunction ) ) );
     }
 
     private static <T> List<T> compute( List<T> data, Function<T, T> f )
