@@ -1,4 +1,4 @@
-package designpatterns.factory.withoutLambda;
+package designpatterns.factory.model;
 
 public enum ProductType
 {

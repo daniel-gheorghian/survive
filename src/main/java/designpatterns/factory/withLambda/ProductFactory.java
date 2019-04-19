@@ -1,29 +1,31 @@
 package designpatterns.factory.withLambda;
 
-import designpatterns.factory.withoutLambda.*;
+import designpatterns.factory.model.Bond;
+import designpatterns.factory.model.Loan;
+import designpatterns.factory.model.Product;
+import designpatterns.factory.model.Stock;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Supplier;
-
-public class ProductFactory
+@FunctionalInterface
+public interface ProductFactory
 {
-    private Map<ProductType, Supplier<Product>> creators = new HashMap<>( );
-
+    static ProductFactory of( ProductCreators creator )
     {
-        creators.put( ProductType.BOND, Bond::new );
-        creators.put( ProductType.LOAN, Loan::new );
-        creators.put( ProductType.STOCK, Stock::new );
-
-        creators = Collections.unmodifiableMap( creators );
+        return creator.constructor;
     }
 
-    public Product createProduct( ProductType productType )
+    Product create( String code );
+
+    enum ProductCreators
     {
-        return Optional.ofNullable( creators.get( productType ) )
-                       .map( Supplier::get )
-                       .orElseThrow( IllegalArgumentException::new );
+        BOND( Bond::new ),
+        LOAN( Loan::new ),
+        STOCK( Stock::new );
+
+        private final ProductFactory constructor;
+
+        ProductCreators( ProductFactory constructor )
+        {
+            this.constructor = constructor;
+        }
     }
 }
