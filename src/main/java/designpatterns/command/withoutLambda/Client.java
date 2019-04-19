@@ -1,5 +1,6 @@
 package designpatterns.command.withoutLambda;
 
+import designpatterns.command.model.Stock;
 import designpatterns.command.withoutLambda.order.BuyStockOrder;
 import designpatterns.command.withoutLambda.order.SellStockOrder;
 

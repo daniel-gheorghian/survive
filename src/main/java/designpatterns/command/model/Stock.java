@@ -1,4 +1,4 @@
-package designpatterns.command.withLambda;
+package designpatterns.command.model;
 
 public class Stock
 {

@@ -1,5 +1,7 @@
 package designpatterns.command.withLambda;
 
+import designpatterns.command.model.Stock;
+
 public class Client
 {
     public static void main( String[] args )
@@ -7,16 +9,11 @@ public class Client
         Stock amazon = new Stock( "AMZN", 1900 );
         Stock apple  = new Stock( "AAPL", 200 );
 
-        Runnable sell1 = ( ) -> amazon.sell( 1 );
-        Runnable sell2 = ( ) -> amazon.sell( 3 );
-        Runnable buy1  = ( ) -> apple.buy( 5 );
-        Runnable buy2  = ( ) -> apple.buy( 10 );
-
         Broker broker = new Broker( );
-        broker.takeOrder( sell1 );
-        broker.takeOrder( sell2 );
-        broker.takeOrder( buy1 );
-        broker.takeOrder( buy2 );
+        broker.takeOrders( ( ) -> amazon.sell( 1 ),
+                           ( ) -> amazon.sell( 3 ),
+                           ( ) -> apple.buy( 5 ),
+                           ( ) -> apple.buy( 10 ) );
 
         broker.placeOrders( );
     }

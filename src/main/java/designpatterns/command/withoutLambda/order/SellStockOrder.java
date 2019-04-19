@@ -1,6 +1,6 @@
 package designpatterns.command.withoutLambda.order;
 
-import designpatterns.command.withoutLambda.Stock;
+import designpatterns.command.model.Stock;
 
 public class SellStockOrder implements Order
 {
