@@ -21,14 +21,9 @@ public interface Validator extends Predicate<String>
         return value -> value.matches( "[a-z]+" );
     }
 
-    default Validator combine( Validator other )
-    {
-        return value -> this.test( value ) && other.test( value );
-    }
-
     default Validator and( Validator other )
     {
-        return this.and( other );
+        return value -> this.test( value ) && other.test( value );
     }
 
     default boolean validate( Field field )
