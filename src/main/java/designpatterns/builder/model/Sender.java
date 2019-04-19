@@ -1,4 +1,4 @@
-package designpatterns.builder.withoutLambda;
+package designpatterns.builder.model;
 
 public class Sender
 {

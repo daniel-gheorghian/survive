@@ -1,8 +1,11 @@
 package designpatterns.builder.withLambda;
 
-import designpatterns.builder.withoutLambda.Sender;
+import designpatterns.builder.model.Contact;
+import designpatterns.builder.model.Message;
+import designpatterns.builder.model.SMSSender;
+import designpatterns.builder.model.Sender;
 
-import static designpatterns.builder.withLambda.Message.message;
+import static designpatterns.builder.withLambda.MessageBuilder.message;
 
 public class Client
 {

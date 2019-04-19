@@ -1,6 +1,4 @@
-package designpatterns.builder.withLambda;
-
-import designpatterns.builder.withoutLambda.Sender;
+package designpatterns.builder.model;
 
 public class SMSSender extends Sender
 {

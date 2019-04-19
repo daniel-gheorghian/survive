@@ -1,4 +1,4 @@
-package designpatterns.builder.withoutLambda;
+package designpatterns.builder.model;
 
 public class Message
 {
@@ -26,10 +26,5 @@ public class Message
     public String getContent( )
     {
         return content;
-    }
-
-    public static MessageBuilder builder( )
-    {
-        return new MessageBuilder( );
     }
 }

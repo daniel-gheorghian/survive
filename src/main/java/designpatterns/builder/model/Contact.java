@@ -1,4 +1,4 @@
-package designpatterns.builder.withLambda;
+package designpatterns.builder.model;
 
 public class Contact
 {

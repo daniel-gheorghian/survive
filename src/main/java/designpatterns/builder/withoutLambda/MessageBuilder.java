@@ -1,5 +1,8 @@
 package designpatterns.builder.withoutLambda;
 
+import designpatterns.builder.model.Message;
+import designpatterns.builder.model.Sender;
+
 public class MessageBuilder
 {
     private Sender sender;
@@ -30,5 +33,10 @@ public class MessageBuilder
     public Message build( )
     {
         return new Message( sender, title, content );
+    }
+
+    public static MessageBuilder messageBuilder( )
+    {
+        return new MessageBuilder( );
     }
 }
