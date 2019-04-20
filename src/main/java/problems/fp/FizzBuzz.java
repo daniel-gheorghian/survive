@@ -14,6 +14,8 @@ package problems.fp;
  * Refactor it to use a more functional style!
  *
  * (hint: may work with an IntStream, also see methods IntStream.rangeClosed(), mapToObj()...)
+ *
+ * Question: how can you structure your code to make it easier testable by unit tests?..
  */
 public class FizzBuzz
 {
