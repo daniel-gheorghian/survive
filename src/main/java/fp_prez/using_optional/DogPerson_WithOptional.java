@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
 
-public class WithOptional
+public class DogPerson_WithOptional
 {
 
     public static void main( String[] args )
@@ -33,23 +33,23 @@ public class WithOptional
         System.out.println( "d3: " + d3 );
         System.out.println( "d4: " + d4 + "\n" );
 
-        d0.ifPresent( WithOptional::printOwnerNameAddress );
-        d1.ifPresent( WithOptional::printOwnerNameAddress );
-        d2.ifPresent( WithOptional::printOwnerNameAddress );
-        d3.ifPresent( WithOptional::printOwnerNameAddress );
-        d4.ifPresent( WithOptional::printOwnerNameAddress );
+        d0.ifPresent( DogPerson_WithOptional::printOwnerNameAddress );
+        d1.ifPresent( DogPerson_WithOptional::printOwnerNameAddress );
+        d2.ifPresent( DogPerson_WithOptional::printOwnerNameAddress );
+        d3.ifPresent( DogPerson_WithOptional::printOwnerNameAddress );
+        d4.ifPresent( DogPerson_WithOptional::printOwnerNameAddress );
 
         //working with collections/streams with Optional values
         List<Dog> dogs =
                 Stream.of( d0, d1, d2, d3, d4 )
-                      .flatMap( WithOptional::optToStream ) //annoying: must translate Optional to Stream, then flatten
+                      .flatMap( DogPerson_WithOptional::optToStream ) //annoying: must translate Optional to Stream, then flatten
                       .collect( toList( ) );
         System.out.println( "\nnon empty dogs: " + dogs );
 
         List<Person> owners =
                 dogs.stream( )
                     .map( Dog::getOwner )
-                    .flatMap( WithOptional::optToStream )
+                    .flatMap( DogPerson_WithOptional::optToStream )
                     .collect( toList( ) );
         System.out.println( "non empty dog owners: " + owners );
     }
@@ -110,7 +110,7 @@ public class WithOptional
         {
             return ( name == null || name.isEmpty( ) ) ?
                    Optional.empty( ) :
-                   Optional.of( new WithOptional.Person( name, address ) );
+                   Optional.of( new DogPerson_WithOptional.Person( name, address ) );
         }
     }
 

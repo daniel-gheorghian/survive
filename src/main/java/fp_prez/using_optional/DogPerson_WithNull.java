@@ -1,6 +1,6 @@
 package fp_prez.using_optional;
 
-public class WithNull
+public class DogPerson_WithNull
 {
 
     public static void main( String[] args )

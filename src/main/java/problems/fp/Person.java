@@ -3,14 +3,14 @@ package problems.fp;
 /**
  * A simple demo data class (usable for tests)
  */
-class Person
+public class Person
 {
     private final int    cnp;
     private final String name;
     private final int    age;
     private final int    height;
 
-    Person( int cnp, String name, int age, int height )
+    public Person( int cnp, String name, int age, int height )
     {
         this.cnp = cnp;
         this.name = name;
@@ -18,22 +18,22 @@ class Person
         this.height = height;
     }
 
-    int getCnp( )
+    public int getCnp( )
     {
         return cnp;
     }
 
-    String getName( )
+    public String getName( )
     {
         return name;
     }
 
-    int getAge( )
+    public int getAge( )
     {
         return age;
     }
 
-    int getHeight( )
+    public int getHeight( )
     {
         return height;
     }
