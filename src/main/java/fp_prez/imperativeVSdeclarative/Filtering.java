@@ -1,4 +1,4 @@
-package imperativeVSdeclarative;
+package fp_prez.imperativeVSdeclarative;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,7 +12,7 @@ public class Filtering
     {
         int[] arr = { 1, 2, 3, 4, 5, 6 };
 
-        //1) imperative
+        //1) Imperative
         List<Integer> result1 = new ArrayList<>( );
         for( int i = 0; i < arr.length; i++ )
         {
@@ -21,10 +21,9 @@ public class Filtering
                 result1.add( arr[i] );
             }
         }
-
         System.out.println( result1 );
 
-        //2) using 'for-each' - still imperative, but shorter (and a little more declarative, no explicit access by index)
+        //2) Using 'for-each' - still imperative, but shorter (a little more declarative, no explicit indexes)
         List<Integer> result2 = new ArrayList<>( );
         for( int value : arr )
         {
@@ -33,10 +32,9 @@ public class Filtering
                 result2.add( value );
             }
         }
-
         System.out.println( result2 );
 
-        //3) declarative
+        //3) Declarative
         List<Integer> result3 =
                 Arrays.stream( arr )
                       .filter( n -> n % 2 == 0 )
