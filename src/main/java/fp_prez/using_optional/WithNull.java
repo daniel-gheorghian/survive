@@ -17,11 +17,13 @@ public class WithNull
 
     private static void printOwnerNameAddress( Dog dog1 )
     {
-        System.out.println( "Dog belongs to: " + dog1.owner.name + ", lives at address: " + dog1.owner.name );
+        System.out.println( "Dog belongs to: " + dog1.owner.name +
+                            ", lives at address: " + dog1.owner.name );
     }
 
     static class Person
     {
+        //these can be null
         private String name;
         private String address;
 
@@ -30,17 +32,17 @@ public class WithNull
             this.name = name;
         }
 
-        public String getName( )
+        String getName( )
         {
             return name;
         }
 
-        public String getAddress( )
+        String getAddress( )
         {
             return address;
         }
 
-        public void setAddress( String address )
+        void setAddress( String address )
         {
             this.address = address;
         }
@@ -56,17 +58,17 @@ public class WithNull
             this.breed = breed;
         }
 
-        public String getBreed( )
+        String getBreed( )
         {
             return breed;
         }
 
-        public Person getOwner( )
+        Person getOwner( )
         {
             return owner;
         }
 
-        public void setOwner( Person owner )
+        void setOwner( Person owner )
         {
             this.owner = owner;
         }

@@ -60,7 +60,7 @@ public class WithOptional
         return opt.map( Stream::of ).orElse( Stream.empty( ) );
     }
 
-    private static void printOwnerNameAddress( Dog dog )
+    static void printOwnerNameAddress( Dog dog )
     {
         System.out.println(
                 "Dog: breed " + dog.getBreed( ) +
