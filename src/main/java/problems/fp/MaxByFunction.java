@@ -1,9 +1,5 @@
 package problems.fp;
 
-import java.util.Collection;
-import java.util.Optional;
-import java.util.function.Function;
-
 /**
  * Problem related to Higher-Order functions
  *
@@ -28,36 +24,14 @@ public class MaxByFunction
      *
      * Question: what should it signature be? what input params are needed, what to return back..
      */
-    //static ?? maxBy( ??, ??)
-    //{
-    // ...
-    //}
-    private static <T> Optional<T> maxBy( Collection<T> elements,
-                                          Function<T, Number> toNumberFunc )
+
+    /* static ?? maxBy( ??, ??)
     {
-        //start with an empty max
-        Optional<T> max    = Optional.empty( );
-        Double      maxVal = Double.NEGATIVE_INFINITY;
-
-        //go over each element
-        for( T elem : elements )
-        {
-            //compute its numeric value by applying the given lambda (and we also convert it to Double
-            Double val = toNumberFunc.apply( elem ).doubleValue( );
-
-            //if numeric value is biggest found until now, remember the value and also the element
-            if( val > maxVal )
-            {
-                maxVal = val;
-                max = Optional.of( elem );
-            }
-        }
-
-        //return just the max element (either a found one, or empty if collection was empty)
-        return max;
+      ...
     }
+    */
 
-    //just some manual tests
+    //some manual tests
     public static void main( String[] args )
     {
         //TODO: uncomment this after you completed maxBy() function
