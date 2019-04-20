@@ -6,7 +6,7 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
-public class Filtering
+public class DeclarativeVsImperative_Filtering
 {
     public static void main( String[] args )
     {

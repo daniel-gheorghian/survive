@@ -3,7 +3,7 @@ package fp_prez.imperativeVSdeclarative;
 import java.util.Arrays;
 import java.util.List;
 
-public class DeclarativeVsImperative
+public class DeclarativeVsImperative_FindNemo
 {
 
     public static void main( String[] args )
