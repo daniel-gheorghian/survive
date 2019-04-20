@@ -72,32 +72,32 @@ public class MaxByOnCollectionWithLambda
      *
      * @param <T>          - the generic type of elements in the collection (we want to support any type)
      * @param elements     - the collection of elements (of type T)
-     * @param toNumberFunc - function deriving a Number from any element of collection (we use Number here to support all functions which return either an int/long/double.. as Number is the base class for all primitive numeric types)
+     * @param lambdaTtoNumberFunc - function deriving a Number from any element of collection (we use Number here to support all functions which return either an int/long/double.. as Number is the base class for all primitive numeric types)
      * @return - an Optional which  contains either the element (of type T) for which the func() returns the max value,
      * or empty if a max cannot be determined (like for empty collection)
      */
     private static <T> Optional<T> maxBy( Collection<T> elements,
-                                          Function<T, Number> toNumberFunc )
+                                          Function<T, Number> lambdaTtoNumberFunc )
     {
         //start with an empty max
-        Optional<T> max    = Optional.empty( );
-        Double      maxVal = Double.NEGATIVE_INFINITY;
+        Optional<T> maxElem = Optional.empty( );
+        Double      maxVal  = Double.NEGATIVE_INFINITY;
 
         //go over each element
         for( T elem : elements )
         {
             //compute its numeric value by applying the given lambda (and we also convert it to Double
-            Double val = toNumberFunc.apply( elem ).doubleValue( );
+            Double val = lambdaTtoNumberFunc.apply( elem ).doubleValue( );
 
             //if numeric value is biggest found until now, remember the value and also the element
             if( val > maxVal )
             {
                 maxVal = val;
-                max = Optional.of( elem );
+                maxElem = Optional.of( elem );
             }
         }
 
         //return just the max element (either a found one, or empty if collection was empty)
-        return max;
+        return maxElem;
     }
 }
