@@ -21,7 +21,25 @@ import java.util.Set;
 public class SetOperationsWithStreams
 {
 
-    //for manual tests
+    private static Set<String> intersection( Set<String> set1, Set<String> set2 )
+    {
+        //TODO
+        return null;
+    }
+
+    private static Set<String> difference( Set<String> set1, Set<String> set2 )
+    {
+        //TODO
+        return null;
+    }
+
+    private static Set<String> union( Set<String> set1, Set<String> set2 )
+    {
+        //TODO
+        return null;
+    }
+
+    //some manual tests
     public static void main( String[] args )
     {
         //TODO: uncomment this when ready to test
@@ -46,23 +64,5 @@ public class SetOperationsWithStreams
         //Set<String> union13 = ?? //some code with reduce() here?..
         //System.out.println("union(1,2,3): " + union13);
         */
-    }
-
-    private static Set<String> intersection( Set<String> set1, Set<String> set2 )
-    {
-        //FIXME!
-        return null;
-    }
-
-    private static Set<String> difference( Set<String> set1, Set<String> set2 )
-    {
-        //FIXME!
-        return null;
-    }
-
-    private static Set<String> union( Set<String> set1, Set<String> set2 )
-    {
-        //FIXME!
-        return null;
     }
 }

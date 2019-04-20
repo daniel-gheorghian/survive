@@ -20,12 +20,11 @@ package problems.fp;
 public class FizzBuzz
 {
 
+    //some manual tests
     public static void main( String[] args )
     {
-        //some manual tests
         fizzBuzzIterativ( 30 );
-
-        fizzBuzzFunctional( 30 );
+        fizzBuzzFunctional( 30 ); //should print same results..
     }
 
     //--- 1) Iterative version ---//
