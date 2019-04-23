@@ -68,13 +68,34 @@ public class MaxByOnCollectionWithLambda
     }
 
     /**
-     * A more iterative version of the method...
+     * The maxBy method (a functional implementation)
      *
      * @param <T>          - the generic type of elements in the collection (we want to support any type)
      * @param elements     - the collection of elements (of type T)
      * @param toNumberFunc - function deriving a Number from any element of collection (we use Number here to support all functions which return either an int/long/double.. as Number is the base class for all primitive numeric types)
      * @return - an Optional which  contains either the element (of type T) for which the func() returns the max value,
      * or empty if a max cannot be determined (like for empty collection)
+     */
+    private static <T> Optional<T> maxBy( Collection<T> elements,
+                                          Function<T, Number> toNumberFunc )
+    {
+        return elements
+                .stream( )
+                .reduce( ( t1, t2 ) -> maxByOf( t1, t2, toNumberFunc ) ); //relying here on a separate combiner function
+    }
+
+    /**
+     * Helper maxBy function, knows to combine just 2 elements of generic type T,
+     * by choosing the one with the max numeric value (once the given conversion function is applied)
+     */
+    private static <T> T maxByOf( T t1, T t2, Function<T, Number> toNumber )
+    {
+        return toNumber.apply( t1 ).doubleValue( ) > toNumber.apply( t2 ).doubleValue( ) ? t1 : t2;
+    }
+
+    /**
+     * A more iterative version of the method, give just for comparision.
+     * (note that is: longer, more complex, easier to miss some bugs..)
      */
     private static <T> Optional<T> maxByIter( Collection<T> elements,
                                               Function<T, Number> toNumberFunc )
@@ -99,25 +120,5 @@ public class MaxByOnCollectionWithLambda
 
         //return just the max element (either a found one, or empty if collection was empty)
         return maxElem;
-    }
-
-    /**
-     * A more functional version of the method! (using reduce())
-     */
-    private static <T> Optional<T> maxBy( Collection<T> elements,
-                                          Function<T, Number> toNumberFunc )
-    {
-        return elements
-                .stream( )
-                .reduce( ( t1, t2 ) -> maxByOfTwo( t1, t2, toNumberFunc ) );
-    }
-
-    /**
-     * Helper maxBy function, knows to choose between 2 elements of generic type T
-     * by choosing the one with the max numeric value (once conversion function is applied)
-     */
-    private static <T> T maxByOfTwo( T t1, T t2, Function<T, Number> toNumber )
-    {
-        return toNumber.apply( t1 ).doubleValue( ) > toNumber.apply( t2 ).doubleValue( ) ? t1 : t2;
     }
 }
